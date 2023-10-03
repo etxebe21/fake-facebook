@@ -1,6 +1,8 @@
 import React from 'react';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import styled from 'styled-components/native';
+import { View } from 'react-native';
+
 
 const Container = styled.View`
     width: 100%;
@@ -18,6 +20,10 @@ const Text = styled.Text `
     font-weight: bold;
     letter-spacing: -0.3px;
 `
+const Row = styled.View`
+    flex-direction: row;
+`
+
 const Button = styled.TouchableOpacity`
     width: 42px;
     height: 42px;
@@ -33,7 +39,6 @@ const Header = () => {
         <Container>
             <Text> Facebook </Text>
             <Row>
-
                 <Button>
                     <MaterialCommunityIcons name ='magnify' size={26} color='black' />
                 </Button>
@@ -44,4 +49,5 @@ const Header = () => {
         </Container>
     )
 }
-export default Header
+export default Header;
+

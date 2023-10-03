@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { StatusBar, ScrollView } from 'expo-status-bar';
+import { StatusBar, ScrollView } from 'react-native';
 import { NavigationContainer} from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
@@ -39,7 +39,7 @@ const App = () => {
 
     }}
     screenOptions={({ route }) => ({
-      tabBarIcon: ({getFocusedRouteNameFromRoute, color, size}) =>{
+      tabBarIcon: ({focused, color, size}) =>{
         let iconName;
         if(route.name === 'Home') iconName = 'home'
         else if(route.name === 'Friends') iconName = 'account-multiple-outline'
