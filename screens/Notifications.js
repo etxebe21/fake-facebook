@@ -7,13 +7,13 @@ const View = styled.View`
     height: 500px;
 `
 
-const Notification = () => {
+const Notifications = () => {
 
     return(
         <View>
-            <Text>Notification</Text>
+            <Text>Notifications</Text>
         </View>
     )
 }
 
-export default Notification
+export default Notifications
