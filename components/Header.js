@@ -32,7 +32,7 @@ const Header = () => {
     return(
         <Container>
             <Text> Facebook </Text>
-            <View style={{ flexDirection: 'row' }}>
+            <Row>
 
                 <Button>
                     <MaterialCommunityIcons name ='magnify' size={26} color='black' />
@@ -40,7 +40,7 @@ const Header = () => {
                 <Button>
                     <MaterialCommunityIcons name="facebook-messenger" size={26} color= 'black' />
                 </Button>
-            </View>
+            </Row>
         </Container>
     )
 }
