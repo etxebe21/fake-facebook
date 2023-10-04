@@ -2,25 +2,26 @@ import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 import {MaterialCommunityIcons} from '@expo/vector-icons';
-import { View } from "react-native";
+import fakeStories from "../data/fakeStories";
+import Avatar from "./Avatar";
 
 const Container = styled.View`
     width: 100%;
     height: 230px;
     flex-direction: row;
     align-items: center;
-`
+`;
 const UseCard = styled.View`
     width: 110px;
     height: 200px;
     margin-right: 10px;
     position: relative;
-`
+`;
 const UseCardStory = styled.Image`
     width: 100%;
     height: 200px;
     border-radius: 10px;
-`
+`;
 const UseCardPlus = styled.View`
     width: 30px;
     height: 30px;
@@ -30,25 +31,39 @@ const UseCardPlus = styled.View`
     position: absolute;
     top: 115px;
     left: 40px;
-`
+`;
 const UserCardFooter = styled.View`
     position: absolute;
     width: 100%;
     height: 35%;
     top: 130px;
     left: 0px;
-    border: 1px solid #DDDDDD;
+    border: ${(props) => (props.profile ? '1px solid #DDDDDD' : 0)};
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    background: #FFFFFF;
-`
+    background: ${(props) => (props.profile ? '#FFFFFF' : 'rgba(255, 255, 255, 0')};
+`;
 const Text = styled.Text`
     font-size: 12px;
     font-weight: bold;
-    padding-top: 15px;
+    padding-top: ${(props) => (props.profile ? '155px' : '45px')};
     text-align: center;
-`
+    color: ${(props) => (props.profile ? '#000000' : '#FFFFFF')};
+`;
+const UserOnCard = styled.View`
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+`;
+
 const Story = () => {
+    const isProfile = true;
     return(
         <>
             <Container>
@@ -59,13 +74,30 @@ const Story = () => {
                 >
                 <UseCard>
                     <UseCardStory source={require('../assets/story.jpg')}/>
-                    <UserCardFooter>
-                        <Text>Crear una historia</Text>
-                    </UserCardFooter>
+                    <UserCardFooter profile={isProfile}>
+                            <Text profile={isProfile}>Crear una historia</Text>
+                        </UserCardFooter>
                     <UseCardPlus>
                         <MaterialCommunityIcons name = "plus" size={28} color="#FFFFFF"/>
                     </UseCardPlus>
                 </UseCard>
+                 {fakeStories.map((story, i) => {
+                    return(
+                        <UseCard key = {i.toString()}>
+                            <UseCardStory source={story.source}/>
+                            <UserCardFooter profile={false}>
+                                <Text profile={false}>{story.name}</Text>
+                            </UserCardFooter>
+                            <UserOnCard>
+                                <Avatar
+                                    source={story.user}
+                                    story={true}
+                                    checked={story.checked}
+                                    />
+                            </UserOnCard>
+                        </UseCard>
+                    )
+                 })}
                </ScrollView>
             </Container>
 

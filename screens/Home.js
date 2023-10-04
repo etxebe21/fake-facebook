@@ -8,6 +8,7 @@ import Story from "../components/Story";
 
 const View = styled.View`
     flex: 1;
+    background: #FFFFFF;
 `
 
 const Home = () => {
