@@ -20,13 +20,13 @@ const Room = styled.TouchableOpacity`
     align-items: center;
     border: 1px solid #82b1dd;
     border-radius: 20px;
-    padding: 0 15px;
+    padding: 0 9px;
     margin-right: 12px;
 `
 const Text = styled.Text`
     color: #1777ff;
     font-size: 12px;
-    padding-left: 6px;
+    padding-left: 4px;
 `
 const User = styled.View`
     margin-right: 12px;
@@ -36,7 +36,7 @@ const Users = () => {
         <Container>
             <ScrollView
                 horizontal
-                showsVerticalScrollIndicator= {false}
+                showsHorizontalScrollIndicator= {false}
                 style={{paddingLeft: 12}}
                 >
           <Room>

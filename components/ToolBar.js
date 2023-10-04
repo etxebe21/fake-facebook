@@ -19,6 +19,9 @@ const Input = styled.TextInput`
     width: 85%;
     padding: 0 8px;
     border: 1px solid #DDD;
+    margin: 10px;
+    border-radius: 30px;
+
 `
 const Divider = styled.View`
     width: 100%;
