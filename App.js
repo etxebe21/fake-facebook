@@ -32,6 +32,7 @@ const App = () => {
             tabBarInactiveTintColor: '#9F9F9F',
             tabBarShowLabel: false,
             tabBarShowIcon: true,
+            
           tabBarIcon: ({focused, color, size}) => {
             let iconName;
             if(route.name === 'Home') iconName = 'home'

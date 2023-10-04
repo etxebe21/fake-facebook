@@ -14,7 +14,7 @@ const Row = styled.View`
     padding: 0 11px;
     align-items: center;
 `
-const Input = styled.TextINput`
+const Input = styled.TextInput`
     height: 40px;
     width: 85%;
     padding: 0 8px;
@@ -41,10 +41,10 @@ const MenuText = styled.Text`
 const Separator = styled.View`
     width: 1px;
     height: 26px;
-    background: ##F0F0F0;
+    background: #F0F0F0;
 `
 
-const ToolBAr = () => {
+const ToolBar = () => {
     return(
         <Container>
             <Row>
@@ -72,4 +72,4 @@ const ToolBAr = () => {
     )
 }
 
-export default ToolBAr
+export default ToolBar
