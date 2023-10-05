@@ -1,15 +1,56 @@
 import React from "react";
 import { ScrollView } from "react-native";
 import styled from "styled-components/native";
+import Animated from "react-native/reanimated";
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import fakeStories from "../data/fakeStories";
 import Avatar from "./Avatar";
+import * as Animations from '../animations/storyAnimations'
 
 const Container = styled.View`
     width: 100%;
     height: 230px;
     flex-direction: row;
     align-items: center;
+    background: #FFFFFF;
+`;
+const FakeCard = styled.View`
+    width: 110px;
+    height: 200px;
+    margin-left: 10px;
+    background: #FFFFFF;
+`;
+const PersonalCard = styled.View`
+    width: 110px;
+    height: 200px;
+    margin-right: 10px;
+    position: absolute;
+    background: #FFFFFF;
+    border-radius: 10px;
+    z-index: 10;
+    border: 1px solid #DDDDDD;
+`;
+const PersonalCardStory = styled.Image`
+    width: 100%;
+    height: 35%;
+    border-radius: 10px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+`;
+const PersonalCardIcon = styled.View`
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background: #3a86e9;
+    border-width: 3px;
+    border-color: #FFFFFF;
+    align-items: center;
+    position: absolute;
+    top: 115px;
+    left: 40px;
 `;
 const UseCard = styled.View`
     width: 110px;
@@ -38,14 +79,12 @@ const UserCardFooter = styled.View`
     height: 35%;
     top: 130px;
     left: 0px;
-    border: ${(props) => (props.profile ? '1px solid #DDDDDD' : 0)};
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
     background: ${(props) => (props.profile ? '#FFFFFF' : 'rgba(255, 255, 255, 0')};
 `;
 const Text = styled.Text`
     font-size: 12px;
     font-weight: bold;
+    margin: 0 10px;
     padding-top: ${(props) => (props.profile ? '15px' : '45px')};
     text-align: center;
     color: ${(props) => (props.profile ? '#000000' : '#FFFFFF')};
