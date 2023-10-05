@@ -21,7 +21,7 @@ const Row = styled.View`
     flex-direction: row;
     align-items: center;
 `
-const User = styled.View`
+const User = styled.Text`
     font-size: 12px;
     font-weight: bold;
     color: #222121;    

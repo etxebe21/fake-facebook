@@ -21,7 +21,7 @@ const Home = () => {
             <MainSeparator/>
             <Story/>
             <MainSeparator/>
-            {/* <Post/> */}
+            <Post/>
         </View>
     )
 }
