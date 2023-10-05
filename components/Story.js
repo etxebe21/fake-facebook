@@ -63,7 +63,7 @@ const UserOnCard = styled.View`
 `;
 
 const Story = () => {
-    const isProfile = true;
+    
     return(
         <>
             <Container>
@@ -74,9 +74,9 @@ const Story = () => {
                 >
                 <UseCard>
                     <UseCardStory source={require('../assets/story.jpg')}/>
-                    <UserCardFooter profile={isProfile}>
-                            <Text profile={isProfile}>Crear una historia</Text>
-                        </UserCardFooter>
+                    <UserCardFooter profile={true}>
+                            <Text  profile={true}>Crear una historia</Text>
+                    </UserCardFooter>
                     <UseCardPlus>
                         <MaterialCommunityIcons name = "plus" size={28} color="#FFFFFF"/>
                     </UseCardPlus>
@@ -93,7 +93,7 @@ const Story = () => {
                                     source={story.user}
                                     story={true}
                                     checked={story.checked}
-                                    />
+                                />
                             </UserOnCard>
                         </UseCard>
                     )
