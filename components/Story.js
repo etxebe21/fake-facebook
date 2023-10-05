@@ -1,11 +1,11 @@
 import React from "react";
 import { ScrollView } from "react-native";
 import styled from "styled-components/native";
-import Animated from "react-native/reanimated";
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import fakeStories from "../data/fakeStories";
 import Avatar from "./Avatar";
-import * as Animations from '../animations/storyAnimations'
+import Animated from "react-native-reanimated";
+import * as Animations from '../animations/storyAnimations';
 
 const Container = styled.View`
     width: 100%;
@@ -106,20 +106,54 @@ const Story = () => {
     return(
         <>
             <Container>
-                <ScrollView
+            <PersonalCard as ={Animated.View} style={{
+                top: Animations.cardTop,
+                left: Animations.cardLeft,
+                height: Animations.cardHeight,
+                borderRadius: Animations.cardRadius,
+                borderBottomLeftRadius: Animations.cardLeftRadius,
+                borderTopLeftRadius: Animations.cardLeftRadius
+            }}>
+                <PersonalCardStory as={Animated.Image}
+                    source={require('../assets/story.jpg')}
+                    style={{
+                        top: Animations.imageTop,
+                        left: Animations.imageLeft,
+                        width: Animations.imageWidth,
+                        height: Animations.imageHeight,
+                        marginRight: Animations.imageMargin,
+                        marginTop: Animations.imageMargin,
+                        borderRadius: Animations.imageRadius,
+                        borderBottomLeftRadius: Animations.imageBottomRadius,
+                        borderTopLeftRadius: Animations.imageBottomRadius
+                    }}/>
+                    <Text as={Animated.Text}
+                    profile={true}
+                    style={{
+                        opacity: Animations.textOpacity,
+                        scale: Animations.textScale
+                    }}
+                    >Crear una historia</Text>
+                <PersonalCardIcon as={Animated.View} style={{
+                    transform: [{scale: Animations.iconScale}],
+                    top: Animations.iconTop,
+                    left: Animations.iconLeft
+                }}>
+                    <MaterialCommunityIcons name="plus" size={28} color="#FFFFFF"/>
+                </PersonalCardIcon>
+            </PersonalCard>
+                <Animated.ScrollView
                     horizontal
                     showsHorizontalScrollIndicator={false}
-                    style={{paddingLeft:10}}
+                    style={{paddingLeft:10, flexDirection: 'row'}}
+                    scrollEventThrottle={5}
+                    onScroll={Animated.event([
+                        {
+                            nativeEvent: {contentOffset: {x: Animations.scroll_x} }
+                        }
+                    ])}
                 >
-                <UseCard>
-                    <UseCardStory source={require('../assets/story.jpg')}/>
-                    <UserCardFooter profile={true}>
-                            <Text  profile={true}>Crear una historia</Text>
-                    </UserCardFooter>
-                    <UseCardPlus>
-                        <MaterialCommunityIcons name = "plus" size={28} color="#FFFFFF"/>
-                    </UseCardPlus>
-                </UseCard>
+               <FakeCard />
                  {fakeStories.map((story, i) => {
                     return(
                         <UseCard key = {i.toString()}>
@@ -137,7 +171,7 @@ const Story = () => {
                         </UseCard>
                     )
                  })}
-               </ScrollView>
+               </Animated.ScrollView>
             </Container>
 
         </>
