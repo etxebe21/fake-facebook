@@ -1,7 +1,7 @@
-import React from "react";
-import { ScrollView } from "react-native";
+import React, { useRef, useEffect } from "react";
+import { ScrollView, Animated } from "react-native";
 import styled from "styled-components/native";
-import {MaterialCommunityIcons} from '@expo/vector-icons';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import fakeStories from "../data/fakeStories";
 import Avatar from "./Avatar";
 
@@ -38,17 +38,17 @@ const UserCardFooter = styled.View`
     height: 35%;
     top: 130px;
     left: 0px;
-    border: ${(props) => (props.profile ? '1px solid #DDDDDD' : 0)};
+    border: ${(props) => (props.profile ? "1px solid #DDDDDD" : 0)};
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    background: ${(props) => (props.profile ? '#FFFFFF' : 'rgba(255, 255, 255, 0')};
+    background: ${(props) => (props.profile ? "#FFFFFF" : "rgba(255, 255, 255, 0")};
 `;
 const Text = styled.Text`
     font-size: 12px;
     font-weight: bold;
-    padding-top: ${(props) => (props.profile ? '155px' : '45px')};
+    padding-top: ${(props) => (props.profile ? "15px" : "45px")};
     text-align: center;
-    color: ${(props) => (props.profile ? '#000000' : '#FFFFFF')};
+    color: ${(props) => (props.profile ? "#000000" : "#FFFFFF")};
 `;
 const UserOnCard = styled.View`
     position: absolute;
@@ -63,46 +63,64 @@ const UserOnCard = styled.View`
 `;
 
 const Story = () => {
-    
-    return(
-        <>
-            <Container>
-                <ScrollView
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    style={{paddingLeft:10}}
-                >
-                <UseCard>
-                    <UseCardStory source={require('../assets/story.jpg')}/>
-                    <UserCardFooter profile={true}>
-                            <Text  profile={true}>Crear una historia</Text>
-                    </UserCardFooter>
-                    <UseCardPlus>
-                        <MaterialCommunityIcons name = "plus" size={28} color="#FFFFFF"/>
-                    </UseCardPlus>
-                </UseCard>
-                 {fakeStories.map((story, i) => {
-                    return(
-                        <UseCard key = {i.toString()}>
-                            <UseCardStory source={story.source}/>
-                            <UserCardFooter profile={false}>
-                                <Text profile={false}>{story.name}</Text>
-                            </UserCardFooter>
-                            <UserOnCard>
-                                <Avatar
-                                    source={story.user}
-                                    story={true}
-                                    checked={story.checked}
-                                />
-                            </UserOnCard>
-                        </UseCard>
-                    )
-                 })}
-               </ScrollView>
-            </Container>
+    const scrollViewRef = useRef();
+    const scrollX = useRef(new Animated.Value(0)).current;
+    const firstCardTransform = useRef(new Animated.Value(0)).current;
 
-        </>
-    )
-}
+    useEffect(() => {
+        Animated.timing(scrollX, {
+            toValue: 1,
+            duration: 1000,
+            useNativeDriver: false,
+        }).start();
+    }, []);
 
-export default Story
+    useEffect(() => {
+        Animated.timing(firstCardTransform, {
+            toValue: 1,
+            duration: 1000,
+            useNativeDriver: false,
+        }).start();
+    }, []);
+
+    return (
+        <Container>
+        <UseCard>
+            <UseCardStory source={require("../assets/story.jpg")} />
+            <UserCardFooter profile={true}>
+                <Text profile={true}>Crear una historia</Text>
+            </UserCardFooter>
+            <UseCardPlus>
+                <MaterialCommunityIcons name="plus" size={28} color="#FFFFFF" />
+            </UseCardPlus>
+        </UseCard>
+        <ScrollView
+            ref={scrollViewRef}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={{ paddingLeft: 10 }}
+            scrollEventThrottle={16}
+            onScroll={Animated.event(
+                [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+                { useNativeDriver: false }
+            )}
+        >
+            {fakeStories.map((story, i) => {
+                return (
+                    <UseCard key={i.toString()}>
+                        <UseCardStory source={story.source} />
+                        <UserCardFooter profile={false}>
+                            <Text profile={false}>{story.name}</Text>
+                        </UserCardFooter>
+                        <UserOnCard>
+                            <Avatar source={story.user} story={true} checked={story.checked} />
+                        </UserOnCard>
+                    </UseCard>
+                );
+            })}
+        </ScrollView>
+    </Container>
+    );
+};
+
+export default Story;
