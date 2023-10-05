@@ -1,6 +1,6 @@
 import React from "react";
 import 'react-native-gesture-handler';
-import { ScrollView } from "react-native-gesture-handler";
+import { ScrollView } from "react-native";
 import styled from "styled-components/native";
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import Avatar from "./Avatar";
@@ -36,7 +36,7 @@ const Users = () => {
         <Container>
             <ScrollView
                 horizontal
-                showsHorizontalScrollIndicator= {false}
+                // showsHorizontalScrollIndicator= {false}
                 style={{paddingLeft: 12}}
                 >
           <Room>

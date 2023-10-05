@@ -23,16 +23,19 @@ const App = () => {
       backgroundColor= "#FFFFFF"
       barStyle= "dark-content"
     />  
-    <Header/>  
+    <ScrollView
+      style = {{maxHeight:'8%'}}
+    >
+      <Header/>  
+    </ScrollView>
     <NavigationContainer>
       <Tab.Navigator
-         swipeEnabled={true}
           screenOptions={({ route}) => ({
+            swipeEnabled: true,
             tabBarActiveTintColor: '#3a86e9',
             tabBarInactiveTintColor: '#9F9F9F',
             tabBarShowLabel: false,
             tabBarShowIcon: true,
-            
           tabBarIcon: ({focused, color, size}) => {
             let iconName;
             if(route.name === 'Home') iconName = 'home'

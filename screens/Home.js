@@ -17,9 +17,11 @@ const Home = () => {
     <GestureHandlerRootView> 
         <View>
             <ToolBar />
-            <MainSeparator />
+            <MainSeparator/>
             <Users />
+            <MainSeparator/>
             <Story/>
+            <MainSeparator/>
         </View>
     </GestureHandlerRootView>
     )
