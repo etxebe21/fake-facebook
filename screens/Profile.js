@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components/native";
 import Avatar from "../components/Avatar";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import MyStory from "../components/myStory";
+import { ScrollView } from "react-native";
+import MainSeparator from "../components/MainSeparator";
 
 const View = styled.View`
     align-items: center;
@@ -61,7 +64,9 @@ const TextIcon = styled.Text `
 const Profile = () => {
 
     return(
+        
         <View>
+        <ScrollView>
             <Row>
                 <IconContainer>
                     <MaterialCommunityIcons name='chevron-left' size={30} color='#3a86e9' />
@@ -78,7 +83,8 @@ const Profile = () => {
             <RoundedImage source={require('../assets/post1.jpg')}  
                 style={{ width: 100,height: 100 }}      />
                  <Text> Mikel Etxebe </Text>
-                 <Row  align-items= 'center'>
+                 <MainSeparator/>  
+            <Row >
                 <IconContainer>
                     <MaterialCommunityIcons name='plus-circle-outline' size={40} color='#3a86e9' />
                     <TextIcon>Add Story</TextIcon>
@@ -96,7 +102,13 @@ const Profile = () => {
                     <TextIcon> More</TextIcon>
                 </IconContainer>
             </Row>
+            <MainSeparator/>
+            <Row>
+            <MyStory/>
+            </Row>
+            </ScrollView>
         </View>
+       
     )
 }
 
