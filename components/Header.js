@@ -40,10 +40,10 @@ const Header = () => {
             <Text> Facebook </Text>
             <Row>
                 <Button>
-                    <MaterialCommunityIcons name ='magnify' size={26} color='black' />
+                    <MaterialCommunityIcons name ='magnify' size={26} color='#3a86e9'/>
                 </Button>
                 <Button>
-                    <MaterialCommunityIcons name="facebook-messenger" size={26} color= 'black' />
+                    <MaterialCommunityIcons name="facebook-messenger" size={26} color= '#3a86e9' />
                 </Button>
             </Row>
         </Container>
