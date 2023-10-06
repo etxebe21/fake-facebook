@@ -5,6 +5,7 @@ import styled from "styled-components/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import fakeStories from "../data/fakeStories";
 import Avatar from "./Avatar";
+import myFakeStories from "../data/myFakeStories";
 
 const Container = styled.View`
     width: 100%;
@@ -66,7 +67,7 @@ const MyStory = () => {
             showsHorizontalScrollIndicator={false}
             style={{ paddingLeft: 10 }}
         >
-            {fakeStories.map((story, i) => {
+            {myFakeStories.map((story, i) => {
                 return (
                     <UseCard key={i.toString()}>
                         <UseCardStory source={story.source} />

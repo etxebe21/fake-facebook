@@ -32,7 +32,7 @@ const Input = styled.TextInput`
     border-radius: 30px;
 `
 const IconContainer = styled.View`
-     bottom: 10px;
+    bottom: 10px;
     height: 60px;
     margin-left: 10px;
     align-items: center; 
@@ -102,7 +102,7 @@ const Profile = () => {
                 </TopIconContainer>
             </Row>    
             <Image
-                source={require('../assets/fake.png')}  
+                source={require('../assets/anoeta.jpg')}  
                 style={{ height: 200 }}      
             />
             <RoundedImage source={require('../assets/mikel.jpg')}  
