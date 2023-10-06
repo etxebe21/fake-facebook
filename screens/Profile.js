@@ -8,7 +8,7 @@ import MainSeparator from "../components/MainSeparator";
 
 const View = styled.View`
     align-items: center;
-    height: 500px;
+    height: 660px;
     background: #FFFFFF;
 `
 const Container = styled.View`
@@ -32,7 +32,16 @@ const Input = styled.TextInput`
     border-radius: 30px;
 `
 const IconContainer = styled.View`
+     bottom: 10px;
+    height: 60px;
     margin-left: 10px;
+    align-items: center; 
+`
+const TopIconContainer = styled.View`
+    bottom: -15px;
+    height: 60px;
+    margin-left: 10px;
+    align-items: center; 
 `
 const Image = styled.Image`
     flex-direction: row;
@@ -44,13 +53,19 @@ const RoundedImage = styled.Image`
     width: 100px;
     height: 100px;
     border-radius: 100px;
-    margin-top: 20px;
+    bottom: 55px;
+    align-self: center; 
+    border: 5px;
+    border-color: #3a86e9;
 `
+
 const Text = styled.Text `
+    bottom: 40px;
     color: #3a86e9;
     font-size: 25px;
     font-weight: bold;
     letter-spacing: -0.3px;
+    align-self: center; 
     
 `
 const TextIcon = styled.Text `
@@ -60,6 +75,16 @@ const TextIcon = styled.Text `
     letter-spacing: -0.3px;
     padding: 5px;
 `
+const UserActive = styled.View`
+    bottom: 80px;
+    right: -224px;
+    width: 25px;
+    height: 25px;
+    border-radius: 15px;
+    background: #10D24B;
+    border: 2px solid #FFFFFF;
+`;
+
 
 const Profile = () => {
 
@@ -68,22 +93,24 @@ const Profile = () => {
         <View>
         <ScrollView>
             <Row>
-                <IconContainer>
+                <TopIconContainer>
                     <MaterialCommunityIcons name='chevron-left' size={30} color='#3a86e9' />
-                </IconContainer>
-                <Input color='#3a86e9' >  <MaterialCommunityIcons name='magnify' size={22} color='#3a86e9' />      Mikel Etxebe </Input>
-                <IconContainer>
+                </TopIconContainer>
+                <Input color='#3a86e9' >  <MaterialCommunityIcons name='magnify' size={22} color='#3a86e9' />  Mikel Etxebe </Input>
+                <TopIconContainer>
                     <MaterialCommunityIcons name='account-box-multiple-outline' size={26} color='#3a86e9' />
-                </IconContainer>
-            </Row>
+                </TopIconContainer>
+            </Row>    
             <Image
-                source={require('../assets/post2.jpg')}  
+                source={require('../assets/fake.png')}  
                 style={{ height: 200 }}      
             />
-            <RoundedImage source={require('../assets/post1.jpg')}  
-                style={{ width: 100,height: 100 }}      />
-                 <Text> Mikel Etxebe </Text>
-                 <MainSeparator/>  
+            <RoundedImage source={require('../assets/mikel.jpg')}  
+                style={{ width: 150,height: 150 }}      />
+                
+                <UserActive></UserActive>
+             <Text> Mikel Etxebe </Text>
+                
             <Row >
                 <IconContainer>
                     <MaterialCommunityIcons name='plus-circle-outline' size={40} color='#3a86e9' />
@@ -103,6 +130,7 @@ const Profile = () => {
                 </IconContainer>
             </Row>
             <MainSeparator/>
+            <TextIcon> Story Highlights                                                   Add New</TextIcon>
             <Row>
             <MyStory/>
             </Row>

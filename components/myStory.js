@@ -74,7 +74,7 @@ const MyStory = () => {
                             <Text profile={false}>{story.name}</Text>
                         </UserCardFooter>
                         <UserOnCard>
-                            <Avatar source={story.user} story={true} checked={story.checked} />
+                            <Avatar source={require('../assets/mikel.jpg')} story={true} checked={story.checked} />
                         </UserOnCard>
                     </UseCard>
                 );
